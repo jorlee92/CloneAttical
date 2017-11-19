@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CloneAttical</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Profile:</h1>
+    <p>Welcome to Cloneattical!</p>
+    <a href="/jobs">View Jobs</a>
+    <a href="/profile">View Profile</a>
+    <a href="/company">Recruiter homepage</a>
+    <div>
+    email: <%= user.local.email %>
+    <p> saved jobs: <% user.savedJobs.forEach( function(job){ %>
+          <%= job %>
+
+   <% }) %>
+    <p> applied jobs: <% user.appliedJobs.forEach(function (job){ %> </br>
+        <%= job %>
+        <a href="/jobs/view/<%= job._id %>" > [ <%= job.jobTitle %> ] </a>
+       <br> 
+    <% }); %>
+    </p>
+    <% if (user.RecruiterDetails) { %>
+        <h1> My Recruitments for <%= user.RecruiterDetails.companyName %> </h1>
+        <% if(user.RecruiterDetails.postedJobs.length > 0){ %>
+            <% user.RecruiterDetails.postedJobs.forEach(function(postedjob){ %>
+                <a href="/jobs/view/<%= postedjob.id %>" > [ <%= postedjob.name %> ] </a>
+                </br>
+            <% }) %>
+        <% } %>
+        <% if(user.RecruiterDetails.postedJobs < 1 || user.RecruiterDetails.postedJobs === null) { %>
+        None Yet!
+       <% } %>
+    <% } %>
+    </div>
+  </body>
+</html>

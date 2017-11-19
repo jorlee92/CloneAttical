@@ -1,0 +1,45 @@
+<% include header %>
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="container">
+      <div class="row col-md-12">
+	  
+	  <h1><%= job.jobTitle %> at <%= job.company.name %></h1>
+	  <iframe
+    width="600"
+    height="450"
+    frameborder="0" style="border:0"
+    src="https://www.google.com/maps/embed/v1/view?key=AIzaSyBIEu-W9Nr936QUsjvjgaXV4lHjI5HvjN4&center=<%= job.location.coords[0] %>,<%= job.location.coords[1] %>&zoom=16" allowfullscreen>
+</iframe>
+
+	  <div class="panel panel-default">
+    	  	   <div class="panel-body">
+      	   	   Job Title
+    		   </div>
+    		   <div class="panel-footer"><%= job.jobTitle %></div>
+	  </div>
+	  	  <div class="panel panel-default">
+    	  	   <div class="panel-body">
+      	   	   Job Type
+    		   </div>
+    		   <div class="panel-footer"><%= job.jobType %></div>
+	  </div>
+	  	  <div class="panel panel-default">
+    	  	   <div class="panel-body">
+      	   	   Location
+    		   </div>
+    		   <div class="panel-footer"><%= job.location.name %></div>
+	  </div>
+	  	  <div class="col-md-12">
+	  	   <a href="<%= job.applicationURL %>"><button class="btn">Apply Now</button></a>
+	  	   <a href="/jobs/view/<%= job["_id"] %>/save"><button class="btn">Save Job</button></a>
+         <a href="/jobs/find/near/<%= job.location.coords[0] %>/<%= job.location.coords[1] %>"><button class="btn">Nearby Jobs</button></a>
+	  </div>
+        
+      </div>
+    </div>
+    <br />
+    <br />
+ <% include footer %>

@@ -1,0 +1,51 @@
+<% include header %>
+    <br />
+    <div class="text-center">
+      <h1>Work Somewhere</h1>
+    </div>
+    <br />
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <a class="btn btn-success btn-lg" href="/jobs" role="button">
+            <span class="glyphicon glyphicon-search" aria-hidden="true" /> Explore Jobs
+          </a>
+        </div>
+      </div>
+    </div>
+    <br />
+    <br />
+    <div class="container">
+      <div class="row">
+        <% jobs.forEach(function (job) { %>
+          <div class="col-md-4">
+            <div class="thumbnail">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Tokyo_%2816043023330%29.jpg/1024px-Tokyo_%2816043023330%29.jpg"
+                alt="tokyo" />
+              <div class="caption">
+                <h3>
+                  <%= job.jobTitle %>
+                </h3>
+                <h4>
+                  <%= job.company.name %>
+                </h4>
+                <p>
+                  <%= job.jobDescription %>
+                </p>
+                <p>
+                  <a href="/jobs/view/<%= job["_id"] %>" class="btn btn-default" role="button">
+                    More Info
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <% }) %>
+      </div>
+    </div>
+    <br />
+    <br />
+       <% include footer %>
+</body>
+
+</html>
