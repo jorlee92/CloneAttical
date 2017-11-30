@@ -24,7 +24,7 @@ router.get('/view/:id/save', function(req, res){
                 res.send("Could not find a job with the provided ID!");
             }
             else{
-                let job_id = result["_id"];
+                let job_id = jobID;
                 let job_company = result.company["name"];
                 let job_title = result.jobTitle;
                 //If the job exists take the data from it and add it as a saved job. 

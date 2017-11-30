@@ -34,7 +34,7 @@
 	  </div>
 	  	  <div class="col-md-12">
 	  	   <a href="<%= job.applicationURL %>"><button class="btn">Apply Now</button></a>
-	  	   <a href="/jobs/view/<%= job["_id"] %>/save"><button class="btn">Save Job</button></a>
+	  	   <a href="/jobs/view/<%= job._id %>/save"><button class="btn">Save Job</button></a>
          <a href="/jobs/find/near/<%= job.location.coords[0] %>/<%= job.location.coords[1] %>"><button class="btn">Nearby Jobs</button></a>
 	  </div>
         

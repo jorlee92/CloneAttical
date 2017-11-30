@@ -1,6 +1,17 @@
 <% include header %>
     <br />
     <div class="text-center">
+    <p>
+      Try these searches: <a href="/jobs/find/near/40.71/-74">Jobs near New York City</a> or <a href="/jobs/find/category/Technology">Technology Jobs</a>
+    </p>
+    <p class="guide">
+      Search Guide:
+      Find a Job near a pair or coordinates: /jobs/find/near/{Longitude}/{Latitude}
+      </br>
+      Find a Job in a certain category: /jobs/find/category/{Name Of Category (example: Sales)}
+      
+    </p>
+
     <% if (jobs.length > 0) { %>
       <h1>Matching Jobs:</h1>
       <% } %>

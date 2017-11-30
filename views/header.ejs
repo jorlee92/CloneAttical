@@ -22,15 +22,18 @@
           </li>
         </ul>
         <ul class="header-right">
+        <% if(typeof(user) === 'undefined'){ %>
+
           <li>
             <a href="/login">Login</a>
           </li>
           <li>
             <a href="/signup">Join</a>
           </li>
+          <% } %>
           <li>
-            <a class="btn btn-default" href="/company" role="button">
-              For Companies
+            <a class="btn btn-default" href="/profile" role="button">
+              Profile
             </a>
           </li>
         </ul>

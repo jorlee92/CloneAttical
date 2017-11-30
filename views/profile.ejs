@@ -1,39 +1,72 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>CloneAttical</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1>Profile:</h1>
-    <p>Welcome to Cloneattical!</p>
-    <a href="/jobs">View Jobs</a>
-    <a href="/profile">View Profile</a>
-    <a href="/company">Recruiter homepage</a>
-    <div>
-    email: <%= user.local.email %>
-    <p> saved jobs: <% user.savedJobs.forEach( function(job){ %>
-          <%= job %>
-
-   <% }) %>
-    <p> applied jobs: <% user.appliedJobs.forEach(function (job){ %> </br>
-        <%= job %>
-        <a href="/jobs/view/<%= job._id %>" > [ <%= job.jobTitle %> ] </a>
-       <br> 
-    <% }); %>
-    </p>
+<% include header %>
+    <div class="container">
+    <p><h1>Your job search @ CloneAttical</h1></p>
+    <div class="col-md-6"> <h3>saved jobs: </h3>
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <td>Company</td>
+          <td>Title</td>
+          <td>View</td>
+        </tr>
+      </thead>
+      <tbody>
+      <% user.savedJobs.forEach( function(job){ %>
+      <tr>
+        <td><%= job.companyName %></td>
+        <td><%= job.jobTitle %></td>
+        <td><a href="/jobs/view/<%= job.jobID %>">Go</a></td>
+      <% }) %>
+      </tbody>
+      </table>
+    </div>
+    <div class="col-md-6"> 
+    <h3>applied jobs:</h3>
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <td>Company</td>
+          <td>Job Title</td>
+          <td>View</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% user.appliedJobs.forEach(function (job){ %>
+        <tr>
+          <td><%= job.companyName %></td>
+          <td><%= job["_id"] %></td>
+          <td><a href="/jobs/view/<%= job.applicationID %>">Go</a></td>
+        </tr>
+        <% }); %>
+      <tbody>
+      </table>
+    </div>
     <% if (user.RecruiterDetails) { %>
-        <h1> My Recruitments for <%= user.RecruiterDetails.companyName %> </h1>
+    <div>
+        <h2>My Job Postings </h2>
         <% if(user.RecruiterDetails.postedJobs.length > 0){ %>
-            <% user.RecruiterDetails.postedJobs.forEach(function(postedjob){ %>
-                <a href="/jobs/view/<%= postedjob.id %>" > [ <%= postedjob.name %> ] </a>
-                </br>
-            <% }) %>
-        <% } %>
+        <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th>Job Title</th>
+              <th>Link</th>
+            </tr>
+          </thead>
+          <tbody>
+              <% user.RecruiterDetails.postedJobs.forEach(function(postedjob){ %>
+              <tr>
+                  <td><%= postedjob.name %> </a></td>
+                  <td><a href="/jobs/view/<%= postedjob.id %>"><button class="btn btn-info">View</button><a></td>
+              </tr>
+              <% }) %>
+          <% } %>
+          </tbody>
+        </table>
         <% if(user.RecruiterDetails.postedJobs < 1 || user.RecruiterDetails.postedJobs === null) { %>
-        None Yet!
-       <% } %>
+          None Yet!
+        <% } %>
     <% } %>
     </div>
+    </div>
   </body>
-</html>
+<% include footer %>
